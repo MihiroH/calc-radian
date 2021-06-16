@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>角度を求める</title>
+</head>
+<body>
+  <h1>y方向とx方向の距離から角度を求める</h1>
+  <label>
+    y方向の距離：
+    <input class="js-value-y" type="number" onkeyup="compute()" onchange="compute()">
+  </label>
+  <label>
+    x方向の距離：
+    <input class="js-value-x" type="number" onkeyup="compute()" onchange="compute()">
+  </label>
+  <div class="result">
+    <p>結果：<span class="js-result"></span>deg</p>
+  </div>
+</body>
+
+<style>
+  label {
+    display: block;
+    margin-top: 20px;
+  }
+</style>
+
+<script>
+  const compute = () => {
+    const y = document.querySelector('.js-value-y').value;
+    const x = document.querySelector('.js-value-x').value;
+    const radian = Math.atan2(y, x);
+    const degree = radian * (180 / Math.PI);
+    const target = document.querySelector('.js-result');
+    target.textContent = degree;
+  }
+</script>
+</html>
